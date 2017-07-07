@@ -1,10 +1,11 @@
 import _ from 'lodash';
-import { FETCH_POSTS } from '../actions'; // will import from the index file
-import { FETCH_POST } from '../actions';
+import { FETCH_POSTS, FETCH_POST, DELETE_POST } from '../actions'; // will import from the index file
 
 export default function(state = {}, action) {
   switch (action.type) {
-    case FETCH_POST:;
+    case FETCH_POST:
+      return _.omit(state, action.payload); //snappier response for user
+    case FETCH_POST:
       // ES5 version
       //const post = action.payload.data;
       //const newState = { ...state };
