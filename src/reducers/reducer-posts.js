@@ -1,4 +1,4 @@
-impoer _ from 'lodash';
+import _ from 'lodash';
 import { FETCH_POSTS } from '../actions'; // will import from the index file
 
 export default function(state = {}, action) {
