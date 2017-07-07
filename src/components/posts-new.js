@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
+// component PostsNew
 class PostsNew extends Component {
   // helper function
   renderField(field) {
@@ -13,13 +14,21 @@ class PostsNew extends Component {
           type="text"
           {...field.input} // saves having to add onChange, onBlur, onFocus etc
         />
+        {field.meta.error}
       </div>
     );
   }
 
+  onSubmit(values) {
+    // this === component
+    console.log(values);
+  }
+
   render() {
+    const { handleSubmit } = this.props;
+
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           name="title"
           component={this.renderField}
@@ -35,6 +44,7 @@ class PostsNew extends Component {
           component={this.renderField}
           label="Post Content"
         />
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     );
   }
@@ -47,6 +57,7 @@ function validate(values) {
 
   // Validate the inputs from 'values'
   if (!values.title || values.title.length < 3) {
+    // corresponds with name="title" - name properties consistently
     errors.title = "Enter a title that is at least 3 characters";
   }
   // can break out into multiple if statements if wanted
