@@ -38,5 +38,5 @@ function mapStateToProps(state) {
 }
 
 // we're using shorthand here instead of using mapDispatchToProps
-// connect is taking care of this for us here
+// 'connect' is taking care of this for us here
 export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
